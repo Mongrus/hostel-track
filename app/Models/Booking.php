@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\BookingLevel;
+use App\Enums\BookingStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -15,6 +17,11 @@ class Booking extends Model
         'booking_level',
         'status',
         'comment'
+    ];
+
+    protected $casts = [
+    'status' => BookingStatus::class,
+    'booking_level' => BookingLevel::class
     ];
 
     public function room(): BelongsTo
