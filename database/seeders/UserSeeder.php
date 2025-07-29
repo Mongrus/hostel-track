@@ -27,8 +27,8 @@ class UserSeeder extends Seeder
         ->count(3)
         ->has(
             Organization::factory()
-                ->count(rand(4, 5))
-                ->hasResidents(rand(7, 10))
+                ->count(rand(2, 3))
+                ->hasResidents(rand(3, 5))
         )
         ->create();
     }

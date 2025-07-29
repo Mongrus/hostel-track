@@ -19,7 +19,7 @@ class BookingSeeder extends Seeder
         $users = User::all();
 
         // Заселяем первых 20 жильцов (или сколько есть)
-        foreach ($residents->take(100) as $resident) {
+        foreach ($residents->take(20) as $resident) {
             $bed = $beds->random();
             $user = $users->random();
 

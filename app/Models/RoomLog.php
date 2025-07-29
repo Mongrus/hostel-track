@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\RoomType;
+use App\Enums\LogActions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +20,7 @@ class RoomLog extends Model
     ];
 
     protected $casts = [
-        'actions' => RoomType::class
+        'actions' => LogActions::class
     ];
 
     public function room(): BelongsTo
