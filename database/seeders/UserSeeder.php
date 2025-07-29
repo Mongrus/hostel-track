@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Organization;
 use App\Enums\UserRole;
 
 class UserSeeder extends Seeder
@@ -22,6 +23,13 @@ class UserSeeder extends Seeder
             'role' => UserRole::ADMIN,
         ]);
 
-        User::factory(5)->create();
+        User::factory()
+        ->count(3)
+        ->has(
+            Organization::factory()
+                ->count(rand(4, 5))
+                ->hasResidents(rand(7, 10))
+        )
+        ->create();
     }
 }
