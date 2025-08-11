@@ -23,7 +23,7 @@ class UserController extends Controller
         $this->userService->register($request->validated());
 
         return redirect()
-            ->route('register.form')
+            ->route('login')
             ->with('status', 'Регистрация прошла успешно');
     }
 }
