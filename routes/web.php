@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\RoomController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
@@ -16,4 +17,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => view('dashboard.index'))->name('dashboard');
+    Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
 });
