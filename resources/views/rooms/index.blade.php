@@ -9,18 +9,23 @@
     @if($rooms->isEmpty())
         <p class="text-gray-500">Комнат пока нет.</p>
     @else
-        <table class="min-w-full bg-white border border-gray-200">
-            <thead>
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow">
+            <thead class="bg-gray-100">
                 <tr>
-                    <th class="px-4 py-2 border-b">№</th>
-                    <th class="px-4 py-2 border-b">Тип</th>
-                    <th class="px-4 py-2 border-b">Описание</th>
+                    <th class="px-4 py-2 border-b text-left">№</th>
+                    <th class="px-4 py-2 border-b text-left">Тип</th>
+                    <th class="px-4 py-2 border-b text-left">Описание</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($rooms as $room)
-                    <tr>
-                        <td class="px-4 py-2 border-b">{{ $room->number }}</td>
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-2 border-b">
+                            <a href="{{ route('rooms.show', $room->id) }}" 
+                               class="text-blue-600 hover:underline">
+                                {{ $room->number }}
+                            </a>
+                        </td>
                         <td class="px-4 py-2 border-b">{{ $room->type }}</td>
                         <td class="px-4 py-2 border-b">{{ $room->description ?? '—' }}</td>
                     </tr>

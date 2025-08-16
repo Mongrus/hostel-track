@@ -13,4 +13,11 @@ class EloquentRoomRepository implements RoomRepositoryInterface
         return Room::all();
     }
 
+    public function findById(int $id): ?Room
+    {
+
+        return Room::findOrFail($id);
+
+    }
+
 }

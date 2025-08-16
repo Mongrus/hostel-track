@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\RoomServiceInterface;
+use App\Models\Room;
 
 class RoomController extends Controller
 {
@@ -18,5 +19,16 @@ class RoomController extends Controller
         $rooms = $this->roomService->getAllRooms();
 
         return view('rooms.index', ['rooms' => $rooms]);
+    }
+
+    public function show(int $id)
+    {
+        $room = $this->roomService->getById($id);
+
+        if (!$room) {
+            abort(404);
+        }
+
+        return view('rooms.show', ['room' => $room]);
     }
 }
