@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRoomRequest;
+use App\Http\Requests\UpdateRoomRequest;
 use App\Services\Interfaces\RoomServiceInterface;
 use App\Models\Room;
 
@@ -45,5 +46,24 @@ class RoomController extends Controller
         $this->roomService->store($data);
 
         return redirect()->route('rooms.index');
+    }
+
+    public function update(UpdateRoomRequest $request, int $id)
+    {
+
+        $this->roomService->update($id, $request->validated());
+
+        return redirect()
+            ->route('rooms.show', $id)
+            ->with('success', 'Комната обновлена.');
+
+    }
+
+    public function edit(int $id)
+    {
+        $room = $this->roomService->getById($id);
+
+        return view('rooms.edit', ['room' => $room]);
+
     }
 }

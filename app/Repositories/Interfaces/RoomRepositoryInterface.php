@@ -12,4 +12,6 @@ interface RoomRepositoryInterface
     public function getById(int $id): ?Room;
 
     public function store(array $data): Room;
+
+    public function update(int $id, array $data): Room;
 }

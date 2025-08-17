@@ -8,12 +8,23 @@
         Комната №{{ $room->number }}
     </h1>
 
+    @if (session('success'))
+        <div class="mb-6 rounded-md bg-green-100 border border-green-300 text-green-800 px-4 py-3 shadow">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="bg-white shadow rounded p-6">
         <p><strong>Тип:</strong> {{ $room->type->value ?? $room->type }}</p>
         <p><strong>Описание:</strong> {{ $room->description ?? '—' }}</p>
     </div>
 
-    <div class="mt-6">
+    <div class="mt-6 flex items-center gap-4">
+        <a href="{{ route('rooms.edit', $room->id) }}" 
+           class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+            Редактировать
+        </a>
+
         <a href="{{ route('rooms.index') }}" 
            class="text-blue-600 hover:underline">
             ← Назад к списку комнат

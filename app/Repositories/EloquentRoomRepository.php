@@ -24,4 +24,13 @@ class EloquentRoomRepository implements RoomRepositoryInterface
     {
         return Room::create($data);
     }
+
+    public function update(int $id, array $data): Room
+    {
+        $room = Room::findOrFail($id);
+
+        $room->update($data);
+
+        return $room;
+    }
 }

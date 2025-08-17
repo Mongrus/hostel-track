@@ -28,4 +28,11 @@ class RoomService implements RoomServiceInterface
     {
         return $this->roomRepo->store($data);
     }
+
+    public function update(int $id, array $data): Room
+    {
+
+        return $this->roomRepo->update($id, $data);
+
+    }
 }

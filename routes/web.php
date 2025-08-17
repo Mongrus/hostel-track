@@ -23,4 +23,6 @@ Route::middleware('auth')->group(function () {
     ->name('rooms.show');
     Route::get('/rooms/create', [RoomController::class, 'create'])->name('rooms.create');
     Route::post('/rooms', [RoomController::class, 'store'])->name('rooms.store');
+    Route::put('/rooms/{id}', [RoomController::class, 'update'])->name('rooms.update');
+    Route::get('/rooms/{id}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
 });

@@ -6,7 +6,6 @@
 <div class="container mx-auto mt-8">
     <h1 class="text-2xl font-bold mb-6">Список комнат</h1>
 
-    {{-- Кнопка для перехода на форму создания --}}
     <div class="mb-4">
         <a href="{{ route('rooms.create') }}" 
            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
@@ -23,6 +22,7 @@
                     <th class="px-4 py-2 border-b text-left">№</th>
                     <th class="px-4 py-2 border-b text-left">Тип</th>
                     <th class="px-4 py-2 border-b text-left">Описание</th>
+                    <th class="px-4 py-2 border-b text-right">Действия</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +36,12 @@
                         </td>
                         <td class="px-4 py-2 border-b">{{ $room->type }}</td>
                         <td class="px-4 py-2 border-b">{{ $room->description ?? '—' }}</td>
+                        <td class="px-4 py-2 border-b text-right">
+                            <a href="{{ route('rooms.edit', $room->id) }}" 
+                               class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+                                Редактировать
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
