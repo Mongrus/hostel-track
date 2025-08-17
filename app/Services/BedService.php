@@ -28,4 +28,11 @@ class BedService implements BedServiceInterface
             ]);
         }
     }
+
+    public function delete(int $id): void
+    {
+
+        $this->bedRepo->destroy($id);
+
+    }
 }

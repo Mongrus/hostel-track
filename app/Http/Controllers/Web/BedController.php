@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\Bed;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBedRequest;
 use App\Services\Interfaces\BedServiceInterface;
@@ -39,5 +40,16 @@ class BedController extends Controller
         return redirect()
             ->route('rooms.show', $room)
             ->with('success', 'Койки добавлены');
+    }
+
+    public function destroy(Bed $bed)
+    {
+
+        $this->bedService->delete($bed->id);
+
+        return redirect()
+        ->route('beds.index', $bed->room_id)
+        ->with('success', 'Кровать удалена');
+
     }
 }

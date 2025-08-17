@@ -11,4 +11,6 @@ interface BedServiceInterface
 
     public function storeMany(Room $room, array $labels, array $descriptions = []): void;
 
+    public function delete(int $id): void;
+
 }

@@ -33,6 +33,7 @@
                 <tr>
                     <th class="px-4 py-2 border-b text-left">Койка</th>
                     <th class="px-4 py-2 border-b text-left">Описание</th>
+                    <th class="px-4 py-2 border-b text-left">Действия</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +41,15 @@
                     <tr class="hover:bg-gray-50">
                         <td class="px-4 py-2 border-b">{{ $bed->label }}</td>
                         <td class="px-4 py-2 border-b">{{ $bed->description ?? '—' }}</td>
+                        <td class="px-4 py-2 border-b">
+                            <form action="{{ route('beds.destroy', $bed->id) }}" method="POST" onsubmit="return confirm('Удалить эту койку?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

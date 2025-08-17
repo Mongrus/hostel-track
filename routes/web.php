@@ -33,5 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/rooms/{room}/beds', [BedController::class, 'index'])->name('beds.index');
     Route::get('/rooms/{room}/beds/create', [BedController::class, 'create'])->name('beds.create');
     Route::post('/rooms/{room}/beds', [BedController::class, 'store'])->name('beds.store');
+    Route::delete('/beds/{bed}', [BedController::class, 'destroy'])->name('beds.destroy');
 
 });

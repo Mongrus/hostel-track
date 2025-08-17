@@ -12,4 +12,6 @@ interface BedRepositoryInterface
 
     public function createForRoom(Room $room, array $data): Bed;
 
+    public function destroy(int $id): void;
+
 }

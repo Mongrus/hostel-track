@@ -23,4 +23,11 @@ class EloquentBedRepository implements BedRepositoryInterface
         return $room->beds()->create($data);
     }
 
+    public function destroy($id): void
+    {
+
+        Bed::destroy($id);
+
+    }
+
 }
