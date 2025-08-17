@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\RoomController;
 use App\Http\Controllers\Web\AuthController;
+use App\Http\Controllers\Web\BedController;
 use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/rooms/{id}', [RoomController::class, 'update'])->name('rooms.update');
     Route::get('/rooms/{id}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
     Route::delete('/rooms/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
+    // Роутинг для коек
+    Route::get('/rooms/{room}/beds', [BedController::class, 'index'])->name('beds.index');
+
 });

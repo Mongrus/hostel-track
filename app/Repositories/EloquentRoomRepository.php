@@ -16,7 +16,7 @@ class EloquentRoomRepository implements RoomRepositoryInterface
     public function getById(int $id): ?Room
     {
 
-        return Room::findOrFail($id);
+        return Room::withCount('beds')->findOrFail($id);
 
     }
 

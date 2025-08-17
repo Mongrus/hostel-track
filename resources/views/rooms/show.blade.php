@@ -14,9 +14,15 @@
         </div>
     @endif
 
-    <div class="bg-white shadow rounded p-6">
+    <div class="bg-white shadow rounded p-6 space-y-2">
         <p><strong>Тип:</strong> {{ $room->type->value ?? $room->type }}</p>
         <p><strong>Описание:</strong> {{ $room->description ?? '—' }}</p>
+        <p><strong>Количество коек:</strong> {{ $room->beds_count }}</p>
+
+        <a href="{{ route('beds.index', $room->id) }}"
+           class="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Смотреть все койки ({{ $room->beds_count }})
+        </a>
     </div>
 
     <div class="mt-6 flex items-center gap-4">

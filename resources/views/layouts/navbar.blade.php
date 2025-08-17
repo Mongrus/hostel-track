@@ -9,7 +9,7 @@
             </li>
             <li>
                 <a href="{{ route('dashboard') }}" 
-                   class="hover:text-gray-300">Дашборд</a>
+                   class="hover:text-gray-300">Личный кабинет</a>
             </li>
         </ul>
 

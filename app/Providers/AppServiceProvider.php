@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\EloquentBedRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Services\UserService;
 use App\Services\Interfaces\UserServiceInterface;
@@ -12,7 +13,10 @@ use App\Services\AuthService;
 use App\Services\Interfaces\RoomServiceInterface;
 use App\Repositories\Interfaces\RoomRepositoryInterface;
 use App\Repositories\EloquentRoomRepository;
+use App\Repositories\Interfaces\BedRepositoryInterface;
+use App\Services\Interfaces\BedServiceInterface;
 use App\Services\RoomService;
+use App\Services\BedService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AuthServiceInterface::class, AuthService::class);
         $this->app->bind(RoomServiceInterface::class, RoomService::class);
         $this->app->bind(RoomRepositoryInterface::class, EloquentRoomRepository::class);
+        $this->app->bind(BedServiceInterface::class, BedService::class);
+        $this->app->bind(BedRepositoryInterface::class, EloquentBedRepository::class);
     }
 }
