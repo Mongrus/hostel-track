@@ -31,5 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/rooms/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
     // Роутинг для коек
     Route::get('/rooms/{room}/beds', [BedController::class, 'index'])->name('beds.index');
+    Route::get('/rooms/{room}/beds/create', [BedController::class, 'create'])->name('beds.create');
+    Route::post('/rooms/{room}/beds', [BedController::class, 'store'])->name('beds.store');
 
 });

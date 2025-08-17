@@ -43,9 +43,9 @@ class RoomController extends Controller
     {
         $data = $request->validated();
 
-        $this->roomService->store($data);
+        $room = $this->roomService->store($data);
 
-        return redirect()->route('rooms.index');
+        return redirect()->route('beds.create', $room->id);
     }
 
     public function update(UpdateRoomRequest $request, int $id)

@@ -19,10 +19,17 @@
         <p><strong>Описание:</strong> {{ $room->description ?? '—' }}</p>
         <p><strong>Количество коек:</strong> {{ $room->beds_count }}</p>
 
-        <a href="{{ route('beds.index', $room->id) }}"
-           class="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-            Смотреть все койки ({{ $room->beds_count }})
-        </a>
+        <div class="flex flex-col sm:flex-row gap-3 mt-4">
+            <a href="{{ route('beds.index', $room->id) }}"
+               class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                Смотреть все койки ({{ $room->beds_count }})
+            </a>
+
+            <a href="{{ route('beds.create', $room->id) }}"
+               class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                ➕ Добавить койку
+            </a>
+        </div>
     </div>
 
     <div class="mt-6 flex items-center gap-4">
