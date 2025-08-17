@@ -6,6 +6,14 @@
 <div class="container mx-auto mt-8">
     <h1 class="text-2xl font-bold mb-6">Список комнат</h1>
 
+    {{-- Кнопка для перехода на форму создания --}}
+    <div class="mb-4">
+        <a href="{{ route('rooms.create') }}" 
+           class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Добавить комнату
+        </a>
+    </div>
+
     @if($rooms->isEmpty())
         <p class="text-gray-500">Комнат пока нет.</p>
     @else

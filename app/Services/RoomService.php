@@ -14,13 +14,18 @@ class RoomService implements RoomServiceInterface
     ) {
     }
 
-    public function getAllRooms(): Collection
+    public function all(): Collection
     {
-        return $this->roomRepo->index();
+        return $this->roomRepo->all();
     }
 
     public function getById(int $id): ?Room
     {
-        return $this->roomRepo->findById($id);
+        return $this->roomRepo->getById($id);
+    }
+
+    public function store(array $data): Room
+    {
+        return $this->roomRepo->store($data);
     }
 }

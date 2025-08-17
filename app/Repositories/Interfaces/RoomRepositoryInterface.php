@@ -7,7 +7,9 @@ use App\Models\Room;
 
 interface RoomRepositoryInterface
 {
-    public function index(): Collection;
+    public function all(): Collection;
 
-    public function findById(int $id): ?Room;
+    public function getById(int $id): ?Room;
+
+    public function store(array $data): Room;
 }

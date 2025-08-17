@@ -7,7 +7,9 @@ use App\Models\Room;
 
 interface RoomServiceInterface
 {
-    public function getAllRooms(): Collection;
+    public function all(): Collection;
 
     public function getById(int $id): ?Room;
+
+    public function store(array $data): Room;
 }

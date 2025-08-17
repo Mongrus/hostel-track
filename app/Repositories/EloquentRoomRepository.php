@@ -8,16 +8,20 @@ use Illuminate\Support\Collection;
 
 class EloquentRoomRepository implements RoomRepositoryInterface
 {
-    public function index(): Collection
+    public function all(): Collection
     {
         return Room::all();
     }
 
-    public function findById(int $id): ?Room
+    public function getById(int $id): ?Room
     {
 
         return Room::findOrFail($id);
 
     }
 
+    public function store(array $data): Room
+    {
+        return Room::create($data);
+    }
 }

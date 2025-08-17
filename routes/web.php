@@ -18,5 +18,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => view('dashboard.index'))->name('dashboard');
     Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
-    Route::get('/rooms/{id}', [RoomController::class, 'show'])->name('rooms.show');
+    Route::get('/rooms/{id}', [RoomController::class, 'show'])
+    ->whereNumber('id')
+    ->name('rooms.show');
+    Route::get('/rooms/create', [RoomController::class, 'create'])->name('rooms.create');
+    Route::post('/rooms', [RoomController::class, 'store'])->name('rooms.store');
 });
