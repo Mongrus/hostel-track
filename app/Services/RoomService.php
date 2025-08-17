@@ -35,4 +35,11 @@ class RoomService implements RoomServiceInterface
         return $this->roomRepo->update($id, $data);
 
     }
+
+    public function delete(int $id): void
+    {
+
+        $this->roomRepo->delete($id);
+
+    }
 }

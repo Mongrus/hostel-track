@@ -3,7 +3,6 @@
 namespace App\Services\Interfaces;
 
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Request;
 use App\Models\Room;
 
 interface RoomServiceInterface
@@ -15,5 +14,7 @@ interface RoomServiceInterface
     public function store(array $data): Room;
 
     public function update(int $id, array $data): Room;
+
+    public function delete(int $id): void;
 
 }

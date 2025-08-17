@@ -25,6 +25,17 @@
             Редактировать
         </a>
 
+        <form action="{{ route('rooms.destroy', $room->id) }}" 
+              method="POST" 
+              onsubmit="return confirm('Удалить эту комнату?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" 
+                    class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+                Удалить
+            </button>
+        </form>
+
         <a href="{{ route('rooms.index') }}" 
            class="text-blue-600 hover:underline">
             ← Назад к списку комнат

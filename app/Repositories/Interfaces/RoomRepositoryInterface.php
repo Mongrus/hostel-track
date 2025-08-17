@@ -14,4 +14,6 @@ interface RoomRepositoryInterface
     public function store(array $data): Room;
 
     public function update(int $id, array $data): Room;
+
+    public function delete(int $id): void;
 }

@@ -33,4 +33,11 @@ class EloquentRoomRepository implements RoomRepositoryInterface
 
         return $room;
     }
+
+    public function delete(int $id): void
+    {
+
+        Room::destroy($id);
+
+    }
 }

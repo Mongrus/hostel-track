@@ -66,4 +66,13 @@ class RoomController extends Controller
         return view('rooms.edit', ['room' => $room]);
 
     }
+
+    public function destroy(int $id)
+    {
+        $this->roomService->delete($id);
+
+        return redirect()
+        ->route('rooms.index')
+        ->with('success', "Комната #$id удаленна");
+    }
 }
