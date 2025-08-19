@@ -23,6 +23,19 @@ class EloquentBedRepository implements BedRepositoryInterface
         return $room->beds()->create($data);
     }
 
+    public function update(array $data, Room $room, Bed $bed): Bed
+    {
+
+        if ($bed->room_id !== $room->id) {
+            throw new \DomainException('Койка не принадлежит данной комнате');
+        }
+
+        $bed->update($data);
+
+        return $bed;
+
+    }
+
     public function destroy($id): void
     {
 

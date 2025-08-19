@@ -8,7 +8,7 @@
         <h1 class="text-2xl font-bold">Койки в комнате №{{ $room->number }}</h1>
 
         <div class="flex items-center gap-4">
-            <a href="{{ route('rooms.show', $room->id) }}" class="text-blue-600 hover:underline">
+            <a href="{{ route('rooms.show', $room) }}" class="text-blue-600 hover:underline">
                 ← Назад к комнате
             </a>
             <a href="{{ route('rooms.index') }}" class="text-blue-600 hover:underline">
@@ -41,11 +41,27 @@
                     <tr class="hover:bg-gray-50">
                         <td class="px-4 py-2 border-b">{{ $bed->label }}</td>
                         <td class="px-4 py-2 border-b">{{ $bed->description ?? '—' }}</td>
-                        <td class="px-4 py-2 border-b">
-                            <form action="{{ route('beds.destroy', $bed->id) }}" method="POST" onsubmit="return confirm('Удалить эту койку?');">
+                        <td class="px-4 py-2 border-b flex gap-2">
+                            {{-- Просмотр --}}
+                            <a href="{{ route('beds.show', [$room, $bed]) }}"
+                               class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">
+                                Просмотр
+                            </a>
+
+                            {{-- Редактировать --}}
+                            <a href="{{ route('beds.edit', [$room, $bed]) }}"
+                               class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-sm">
+                                Редактировать
+                            </a>
+
+                            {{-- Удалить --}}
+                            <form action="{{ route('beds.destroy', [$room, $bed]) }}"
+                                  method="POST"
+                                  onsubmit="return confirm('Удалить эту койку?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm">
+                                <button type="submit"
+                                        class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm">
                                     Удалить
                                 </button>
                             </form>

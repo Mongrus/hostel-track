@@ -32,7 +32,10 @@ Route::middleware('auth')->group(function () {
     // Роутинг для коек
     Route::get('/rooms/{room}/beds', [BedController::class, 'index'])->name('beds.index');
     Route::get('/rooms/{room}/beds/create', [BedController::class, 'create'])->name('beds.create');
+    Route::get('/rooms/{room}/beds/{bed}', [BedController::class, 'show'])->name('beds.show');
     Route::post('/rooms/{room}/beds', [BedController::class, 'store'])->name('beds.store');
-    Route::delete('/beds/{bed}', [BedController::class, 'destroy'])->name('beds.destroy');
+    Route::get('/rooms/{room}/beds/{bed}/edit', [BedController::class, 'edit'])->name('beds.edit');
+    Route::put('/rooms/{room}/beds/{bed}', [BedController::class, 'update'])->name('beds.update');
+    Route::delete('/rooms/{room}/beds/{bed}', [BedController::class, 'destroy'])->name('beds.destroy');
 
 });

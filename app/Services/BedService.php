@@ -6,6 +6,7 @@ use App\Services\Interfaces\BedServiceInterface;
 use App\Repositories\Interfaces\BedRepositoryInterface;
 use Illuminate\Support\Collection;
 use App\Models\Room;
+use App\Models\Bed;
 
 class BedService implements BedServiceInterface
 {
@@ -27,6 +28,11 @@ class BedService implements BedServiceInterface
                 'description' => $descriptions[$i] ?? null,
             ]);
         }
+    }
+
+    public function update(array $data, Room $room, Bed $bed): Bed
+    {
+        return $this->bedRepo->update($data, $room, $bed);
     }
 
     public function delete(int $id): void
