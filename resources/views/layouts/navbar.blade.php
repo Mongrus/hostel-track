@@ -8,6 +8,10 @@
                    class="hover:text-gray-300">Комнаты</a>
             </li>
             <li>
+                <a href="{{ route('residents.index') }}" 
+                class="hover:text-gray-300">Жильцы</a>
+            </li>
+            <li>
                 <a href="{{ route('dashboard') }}" 
                    class="hover:text-gray-300">Личный кабинет</a>
             </li>

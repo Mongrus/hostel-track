@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Web\RoomController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\BedController;
+use App\Http\Controllers\Web\ResidentController;
+use App\Http\Controllers\Web\RoomController;
 use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,28 +15,57 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [UserController::class, 'store'])->name('register');
 });
 
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth')->name('logout');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/dashboard', fn () => view('dashboard.index'))->name('dashboard');
 
-    // Роутинг для комнат
+    /** ---------------- Rooms ---------------- */
     Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
-    Route::get('/rooms/{id}', [RoomController::class, 'show'])
-    ->whereNumber('id')
-    ->name('rooms.show');
-    Route::get('/rooms/create', [RoomController::class, 'create'])->name('rooms.create');
-    Route::post('/rooms', [RoomController::class, 'store'])->name('rooms.store');
-    Route::put('/rooms/{id}', [RoomController::class, 'update'])->name('rooms.update');
-    Route::get('/rooms/{id}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
-    Route::delete('/rooms/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
-    // Роутинг для коек
-    Route::get('/rooms/{room}/beds', [BedController::class, 'index'])->name('beds.index');
-    Route::get('/rooms/{room}/beds/create', [BedController::class, 'create'])->name('beds.create');
-    Route::get('/rooms/{room}/beds/{bed}', [BedController::class, 'show'])->name('beds.show');
-    Route::post('/rooms/{room}/beds', [BedController::class, 'store'])->name('beds.store');
-    Route::get('/rooms/{room}/beds/{bed}/edit', [BedController::class, 'edit'])->name('beds.edit');
-    Route::put('/rooms/{room}/beds/{bed}', [BedController::class, 'update'])->name('beds.update');
-    Route::delete('/rooms/{room}/beds/{bed}', [BedController::class, 'destroy'])->name('beds.destroy');
 
+    Route::get('/rooms/create', [RoomController::class, 'create'])->name('rooms.create');
+
+    Route::post('/rooms', [RoomController::class, 'store'])->name('rooms.store');
+
+    Route::get('/rooms/{room}', [RoomController::class, 'show'])
+        ->whereNumber('room')->name('rooms.show');
+
+    Route::get('/rooms/{room}/edit', [RoomController::class, 'edit'])
+        ->whereNumber('room')->name('rooms.edit');
+
+    Route::put('/rooms/{room}', [RoomController::class, 'update'])
+        ->whereNumber('room')->name('rooms.update');
+
+    Route::delete('/rooms/{room}', [RoomController::class, 'destroy'])
+        ->whereNumber('room')->name('rooms.destroy');
+
+    /** ---------------- Beds ---------------- */
+    Route::scopeBindings()->group(function () {
+
+        Route::get('/rooms/{room}/beds', [BedController::class, 'index'])
+            ->whereNumber('room')->name('beds.index');
+
+        Route::get('/rooms/{room}/beds/create', [BedController::class, 'create'])
+            ->whereNumber('room')->name('beds.create');
+
+        Route::post('/rooms/{room}/beds', [BedController::class, 'store'])
+            ->whereNumber('room')->name('beds.store');
+
+        Route::get('/rooms/{room}/beds/{bed}/edit', [BedController::class, 'edit'])
+            ->whereNumber('room')->whereNumber('bed')->name('beds.edit');
+
+        Route::put('/rooms/{room}/beds/{bed}', [BedController::class, 'update'])
+            ->whereNumber('room')->whereNumber('bed')->name('beds.update');
+
+        Route::get('/rooms/{room}/beds/{bed}', [BedController::class, 'show'])
+            ->whereNumber('room')->whereNumber('bed')->name('beds.show');
+
+        Route::delete('/rooms/{room}/beds/{bed}', [BedController::class, 'destroy'])
+            ->whereNumber('room')->whereNumber('bed')->name('beds.destroy');
+    });
+
+    /** ---------------- Resident ---------------- */
+    Route::get('/residents', [ResidentController::class, 'index'])->name('residents.index');
 });
