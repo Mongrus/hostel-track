@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Services\Interfaces\ResidentServiceInterface;
+use App\Models\Resident;
 
 class ResidentController extends Controller
 {
@@ -20,4 +21,12 @@ class ResidentController extends Controller
         return view('residents.index', ['residents' => $residents]);
 
     }
+
+    public function show(Resident $resident)
+    {
+
+        return view('residents.show', ['resident' => $resident]);
+
+    }
+
 }

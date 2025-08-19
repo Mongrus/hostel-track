@@ -59,8 +59,8 @@
                         <td class="px-4 py-3 border-b">{{ $resident->updated_at?->format('d.m.Y H:i') ?? '—' }}</td>
                         <td class="px-4 py-3 border-b">
                             <div class="flex items-center gap-2">
-                                @if (Route::has('resident.show'))
-                                    <a href="{{ route('resident.show', $resident) }}"
+                                @if (Route::has('residents.show'))
+                                    <a href="{{ route('residents.show', $resident) }}"
                                        class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 text-xs">
                                         Просмотр
                                     </a>

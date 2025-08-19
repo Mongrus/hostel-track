@@ -68,4 +68,7 @@ Route::middleware('auth')->group(function () {
 
     /** ---------------- Resident ---------------- */
     Route::get('/residents', [ResidentController::class, 'index'])->name('residents.index');
+
+    Route::get('/residents/{resident}', [ResidentController::class, 'show'])
+    ->whereNumber('resident')->name('residents.show');
 });
