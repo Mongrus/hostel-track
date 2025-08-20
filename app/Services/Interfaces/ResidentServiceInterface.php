@@ -13,5 +13,6 @@ interface ResidentServiceInterface
 
     public function update(Resident $resident, array $data): Resident;
 
+    public function delete(int $id): void;
 
 }

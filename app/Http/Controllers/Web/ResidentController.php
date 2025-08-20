@@ -71,5 +71,16 @@ class ResidentController extends Controller
 
     }
 
+    public function destroy(Resident $resident)
+    {
+
+        $this->resService->delete($resident->id);
+
+        return redirect()
+        ->route('residents.index')
+        ->with('success', 'Жилец успешно удален');
+
+    }
+
 
 }

@@ -13,4 +13,6 @@ interface ResidentRepositoryInterface
 
     public function update(Resident $resident, array $attrs): Resident;
 
+    public function delete(int $id): void;
+
 }

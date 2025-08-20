@@ -58,4 +58,12 @@ class ResidentService implements ResidentServiceInterface
         return $this->resRep->update($resident, $payload);
 
     }
+
+    public function delete(int $id): void
+    {
+
+        $this->resRep->delete($id);
+
+    }
+
 }

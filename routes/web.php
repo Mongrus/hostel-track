@@ -79,4 +79,7 @@ Route::middleware('auth')->group(function () {
     ->whereNumber('resident')->name('residents.edit');
     Route::put('/residents/{resident}', [ResidentController::class, 'update'])
     ->whereNumber('resident')->name('residents.update');
+
+    Route::delete('/residents/{resident}', [ResidentController::class, 'destroy'])
+    ->whereNumber('resident')->name('residents.destroy');
 });

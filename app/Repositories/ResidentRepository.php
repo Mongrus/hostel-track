@@ -31,4 +31,11 @@ class ResidentRepository implements ResidentRepositoryInterface
 
     }
 
+    public function delete(int $id): void
+    {
+
+        Resident::destroy($id);
+
+    }
+
 }
