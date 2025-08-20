@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\BedController;
+use App\Http\Controllers\Web\OrganizationController;
 use App\Http\Controllers\Web\ResidentController;
 use App\Http\Controllers\Web\RoomController;
 use App\Http\Controllers\Web\UserController;
@@ -82,4 +83,7 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/residents/{resident}', [ResidentController::class, 'destroy'])
     ->whereNumber('resident')->name('residents.destroy');
+
+    /** ---------------- Organization ---------------- */
+    Route::get('/organizations', [OrganizationController::class, 'index'])->name('organizations.index');
 });

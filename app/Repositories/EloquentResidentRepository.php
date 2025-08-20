@@ -6,7 +6,7 @@ use App\Repositories\Interfaces\ResidentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\Resident;
 
-class ResidentRepository implements ResidentRepositoryInterface
+class EloquentResidentRepository implements ResidentRepositoryInterface
 {
     public function index(): Collection
     {

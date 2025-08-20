@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Repositories\EloquentBedRepository;
+use App\Repositories\EloquentOrganizationRepository;
 use App\Repositories\Interfaces\ResidentRepositoryInterface;
 use App\Services\Interfaces\ResidentServiceInterface;
+use App\Services\OrganizationService;
 use Illuminate\Support\ServiceProvider;
 use App\Services\UserService;
 use App\Services\Interfaces\UserServiceInterface;
@@ -16,10 +18,12 @@ use App\Services\Interfaces\RoomServiceInterface;
 use App\Repositories\Interfaces\RoomRepositoryInterface;
 use App\Repositories\EloquentRoomRepository;
 use App\Repositories\Interfaces\BedRepositoryInterface;
-use App\Repositories\ResidentRepository;
+use App\Repositories\Interfaces\OrganizationRepositoryInterface;
+use App\Repositories\EloquentResidentRepository;
 use App\Services\Interfaces\BedServiceInterface;
 use App\Services\RoomService;
 use App\Services\BedService;
+use App\Services\Interfaces\OrganizationServiceInterface;
 use App\Services\ResidentService;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BedServiceInterface::class, BedService::class);
         $this->app->bind(BedRepositoryInterface::class, EloquentBedRepository::class);
         $this->app->bind(ResidentServiceInterface::class, ResidentService::class);
-        $this->app->bind(ResidentRepositoryInterface::class, ResidentRepository::class);
+        $this->app->bind(ResidentRepositoryInterface::class, EloquentResidentRepository::class);
+        $this->app->bind(OrganizationServiceInterface::class, OrganizationService::class);
+        $this->app->bind(OrganizationRepositoryInterface::class, EloquentOrganizationRepository::class);
     }
 }

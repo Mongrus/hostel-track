@@ -12,8 +12,8 @@
                 class="hover:text-gray-300">Жильцы</a>
             </li>
             <li>
-                <a href="{{ route('residents.create') }}" 
-                class="hover:text-gray-300">Времянка</a>
+                <a href="{{ route('organizations.index') }}" 
+                class="hover:text-gray-300">Организации</a>
             </li>
             <li>
                 <a href="{{ route('dashboard') }}" 
