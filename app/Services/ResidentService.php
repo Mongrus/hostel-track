@@ -45,4 +45,17 @@ class ResidentService implements ResidentServiceInterface
         });
 
     }
+
+    public function update(Resident $resident, array $data): Resident
+    {
+        $payload = [
+            'name'            => $data['name'],
+            'surname'         => $data['surname'],
+            'phone'           => $data['phone'],
+            'organization_id' => $data['organization_id'] ?? null,
+        ];
+
+        return $this->resRep->update($resident, $payload);
+
+    }
 }

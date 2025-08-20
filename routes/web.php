@@ -69,9 +69,14 @@ Route::middleware('auth')->group(function () {
     /** ---------------- Resident ---------------- */
     Route::get('/residents', [ResidentController::class, 'index'])->name('residents.index');
 
+    Route::get('/residents/create', [ResidentController::class, 'create'])->name('residents.create');
+    Route::post('/residents', [ResidentController::class, 'store'])->name('residents.store');
+
     Route::get('/residents/{resident}', [ResidentController::class, 'show'])
     ->whereNumber('resident')->name('residents.show');
 
-    Route::get('/residents/create', [ResidentController::class, 'create'])->name('residents.create');
-    Route::post('/residents', [ResidentController::class, 'store'])->name('residents.store');
+    Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])
+    ->whereNumber('resident')->name('residents.edit');
+    Route::put('/residents/{resident}', [ResidentController::class, 'update'])
+    ->whereNumber('resident')->name('residents.update');
 });

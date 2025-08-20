@@ -10,4 +10,7 @@ interface ResidentRepositoryInterface
     public function index(): Collection;
 
     public function store(array $data): Resident;
+
+    public function update(Resident $resident, array $attrs): Resident;
+
 }

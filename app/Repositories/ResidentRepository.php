@@ -22,4 +22,13 @@ class ResidentRepository implements ResidentRepositoryInterface
 
     }
 
+    public function update(Resident $resident, array $attrs): Resident
+    {
+
+        $resident->update($attrs);
+
+        return $resident;
+
+    }
+
 }

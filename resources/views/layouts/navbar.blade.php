@@ -12,6 +12,10 @@
                 class="hover:text-gray-300">Жильцы</a>
             </li>
             <li>
+                <a href="{{ route('residents.create') }}" 
+                class="hover:text-gray-300">Времянка</a>
+            </li>
+            <li>
                 <a href="{{ route('dashboard') }}" 
                    class="hover:text-gray-300">Личный кабинет</a>
             </li>

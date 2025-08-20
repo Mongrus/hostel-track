@@ -65,14 +65,14 @@
                                         Просмотр
                                     </a>
                                 @endif
-                                @if (Route::has('resident.edit'))
-                                    <a href="{{ route('resident.edit', $resident) }}"
+                                @if (Route::has('residents.edit'))
+                                    <a href="{{ route('residents.edit', $resident) }}"
                                        class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 text-xs">
                                         Редактировать
                                     </a>
                                 @endif
-                                @if (Route::has('resident.destroy'))
-                                    <form action="{{ route('resident.destroy', $resident) }}" method="POST"
+                                @if (Route::has('residents.destroy'))
+                                    <form action="{{ route('residents.destroy', $resident) }}" method="POST"
                                           onsubmit="return confirm('Удалить жильца?');">
                                         @csrf
                                         @method('DELETE')

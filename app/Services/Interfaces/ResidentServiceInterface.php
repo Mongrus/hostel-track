@@ -11,4 +11,7 @@ interface ResidentServiceInterface
 
     public function store(array $data): Resident;
 
+    public function update(Resident $resident, array $data): Resident;
+
+
 }

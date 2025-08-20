@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreResidentRequest;
+use App\Http\Requests\UpdateResidentRequest;
 use App\Services\Interfaces\ResidentServiceInterface;
 use App\Models\Resident;
 
@@ -49,5 +50,26 @@ class ResidentController extends Controller
         ->with('success', 'Жилец успешно создан');
 
     }
+
+    public function edit(Resident $resident)
+    {
+
+        return view('residents.edit', ['resident' => $resident]);
+
+    }
+
+    public function update(UpdateResidentRequest $request, Resident $resident)
+    {
+
+        $data = $request->validated();
+
+        $this->resService->update($resident, $data);
+
+        return redirect()
+        ->route('residents.show', ['resident' => $resident])
+        ->with('success', 'Жилец обновлён');
+
+    }
+
 
 }
