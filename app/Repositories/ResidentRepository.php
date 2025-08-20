@@ -15,4 +15,11 @@ class ResidentRepository implements ResidentRepositoryInterface
 
     }
 
+    public function store(array $data): Resident
+    {
+
+        return Resident::create($data);
+
+    }
+
 }

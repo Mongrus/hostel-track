@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreResidentRequest;
 use App\Services\Interfaces\ResidentServiceInterface;
 use App\Models\Resident;
 
@@ -26,6 +27,26 @@ class ResidentController extends Controller
     {
 
         return view('residents.show', ['resident' => $resident]);
+
+    }
+
+    public function create()
+    {
+
+        return view('residents.create');
+
+    }
+
+    public function store(StoreResidentRequest $request)
+    {
+
+        $data = $request->validated();
+
+        $this->resService->store($data);
+
+        return redirect()
+        ->route('residents.index')
+        ->with('success', 'Жилец успешно создан');
 
     }
 

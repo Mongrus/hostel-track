@@ -71,4 +71,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/residents/{resident}', [ResidentController::class, 'show'])
     ->whereNumber('resident')->name('residents.show');
+
+    Route::get('/residents/create', [ResidentController::class, 'create'])->name('residents.create');
+    Route::post('/residents', [ResidentController::class, 'store'])->name('residents.store');
 });
