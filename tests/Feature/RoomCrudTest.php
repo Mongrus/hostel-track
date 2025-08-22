@@ -23,7 +23,6 @@ class RoomCrudTest extends TestCase
     /** @test */
     public function test_index_shows_rooms()
     {
-        $this->actingAs(User::factory()->create());
         $rooms = Room::factory()->count(2)->create();
 
         $resp = $this->get(route('rooms.index'));
@@ -37,7 +36,6 @@ class RoomCrudTest extends TestCase
     /** @test */
     public function test_show_displays_room()
     {
-        $this->actingAs(User::factory()->create());
         $room = Room::factory()->create();
 
         $this->get(route('rooms.show', $room->id))
@@ -49,7 +47,6 @@ class RoomCrudTest extends TestCase
     /** @test */
     public function test_show_returns_404_for_missing_room()
     {
-        $this->actingAs(User::factory()->create());
         $this->get(route('rooms.show', 999999))->assertNotFound();
     }
 
@@ -118,7 +115,6 @@ class RoomCrudTest extends TestCase
     /** @test */
     public function test_store_validates_required_fields()
     {
-        $this->actingAs(User::factory()->create());
         $this->post(route('rooms.store'), [])
              ->assertStatus(302)
              ->assertSessionHasErrors(['number','type']);
