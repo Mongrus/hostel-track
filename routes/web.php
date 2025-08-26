@@ -86,4 +86,11 @@ Route::middleware('auth')->group(function () {
 
     /** ---------------- Organization ---------------- */
     Route::get('/organizations', [OrganizationController::class, 'index'])->name('organizations.index');
+
+    Route::get('/organizations/create', [OrganizationController::class, 'create'])->name('organizations.create');
+    Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
+
+    Route::get('/organizations/{organization}', [OrganizationController::class, 'show'])
+    ->whereNumber('organizanion')->name('organizations.show');
+
 });

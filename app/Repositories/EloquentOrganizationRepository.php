@@ -15,4 +15,11 @@ class EloquentOrganizationRepository implements OrganizationRepositoryInterface
 
     }
 
+    public function store(array $data): Organization
+    {
+
+        return Organization::create($data);
+
+    }
+
 }
