@@ -36,4 +36,11 @@ class OrganizationService implements OrganizationServiceInterface
         return $this->orgRep->update($data, $id);
 
     }
+
+    public function delete(int $id): void
+    {
+
+        $this->orgRep->delete($id);
+
+    }
 }

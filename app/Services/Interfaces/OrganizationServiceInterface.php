@@ -13,4 +13,6 @@ interface OrganizationServiceInterface
 
     public function update(array $data, int $id): Organization;
 
+    public function delete(int $id): void;
+
 }

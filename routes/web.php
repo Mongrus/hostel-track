@@ -97,4 +97,7 @@ Route::middleware('auth')->group(function () {
     ->whereNumber('organization')->name('organizations.edit');
     Route::put('/organizations/{organization}', [OrganizationController::class, 'update'])
     ->whereNumber('organization')->name('organizations.update');
+
+    Route::delete('/organizations/{organization}', [OrganizationController::class, 'destroy'])
+    ->whereNumber('organization')->name('organizations.destroy');
 });

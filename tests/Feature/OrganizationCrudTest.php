@@ -54,6 +54,14 @@ class OrganizationCrudTest extends TestCase
     }
 
     /** @test */
+    public function test_show_returns_404_for_missing_organization()
+    {
+
+        $this->get(route('organizations.show', 9999999))->assertNotFound();
+
+    }
+
+    /** @test */
     public function test_user_can_create_organization()
     {
 
@@ -104,5 +112,42 @@ class OrganizationCrudTest extends TestCase
             'email'    => 'ivan12345@gmail.com',
             'description' => 'Что-то поменялось',
         ]);
+    }
+
+    /** @test */
+    public function test_user_can_delete_organization()
+    {
+
+        $organization = Organization::factory()->create([
+            'id' => 100,
+            'owner_id' => $this->user->id
+        ]);
+
+        $response = $this->delete(route('organizations.destroy', ['organization' => $organization]));
+
+        $response->assertSessionHasNoErrors()
+                ->assertRedirect(route('organizations.index'));
+
+        $this->assertDatabaseMissing('organizations', [
+            'id' => 100
+        ]);
+
+    }
+
+    /** @test */
+    public function test_store_validates_required_fields()
+    {
+        $this->post(route('organizations.store'), [])
+             ->assertStatus(302)
+             ->assertSessionHasErrors(['name','phone','email']);
+    }
+
+    /** @test */
+    public function test_guest_is_redirected_to_login_on_index()
+    {
+        auth()->logout();
+
+        $this->get(route('organizations.index'))
+             ->assertRedirect(route('login'));
     }
 }

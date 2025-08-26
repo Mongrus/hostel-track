@@ -33,4 +33,11 @@ class EloquentOrganizationRepository implements OrganizationRepositoryInterface
 
     }
 
+    public function delete(int $id): void
+    {
+
+        Organization::destroy($id);
+
+    }
+
 }
