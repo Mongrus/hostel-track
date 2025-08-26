@@ -93,4 +93,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/organizations/{organization}', [OrganizationController::class, 'show'])
     ->whereNumber('organizanion')->name('organizations.show');
 
+    Route::get('/organizations/{organization}/edit', [OrganizationController::class, 'edit'])
+    ->whereNumber('organization')->name('organizations.edit');
+    Route::put('/organizations/{organization}', [OrganizationController::class, 'update'])
+    ->whereNumber('organization')->name('organizations.update');
 });

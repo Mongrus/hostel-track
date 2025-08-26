@@ -73,4 +73,36 @@ class OrganizationCrudTest extends TestCase
 
 
     }
+
+    /** @test */
+    public function test_user_can_update_organization()
+    {
+        $organization = Organization::factory()
+            ->for($this->user, 'owner')
+            ->create([
+                'name' => 'Тестовая организация',
+                'phone' => '+375 0000 123 45',
+                'email' => 'ivanivanov@gmail.com',
+                'description' => 'Информация об организации',
+            ]);
+
+        $response = $this->put(route('organizations.update', $organization), [
+            'name' => 'Новая организация',
+            'phone' => '+375 1234 123 45',
+            'email' => 'ivan12345@gmail.com',
+            'description' => 'Что-то поменялось',
+        ]);
+
+        $response->assertSessionHasNoErrors()
+            ->assertRedirect(route('organizations.show', $organization));
+
+        $this->assertDatabaseHas('organizations', [
+            'id'       => $organization->id,
+            'owner_id' => $this->user->id,
+            'name'     => 'Новая организация',
+            'phone'    => '+375 1234 123 45',
+            'email'    => 'ivan12345@gmail.com',
+            'description' => 'Что-то поменялось',
+        ]);
+    }
 }

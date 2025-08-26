@@ -22,4 +22,15 @@ class EloquentOrganizationRepository implements OrganizationRepositoryInterface
 
     }
 
+    public function update(array $data, int $id): Organization
+    {
+
+        $organization = Organization::findOrFail($id);
+
+        $organization->update($data);
+
+        return $organization;
+
+    }
+
 }

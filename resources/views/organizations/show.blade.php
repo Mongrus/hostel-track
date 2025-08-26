@@ -4,6 +4,11 @@
 
 @section('content')
 <div class="container mx-auto mt-8 space-y-6">
+    @if (session('success'))
+        <div class="rounded-md bg-green-100 border border-green-300 text-green-800 px-4 py-3 shadow">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="flex items-center justify-between">
         <h1 class="text-2xl font-bold">
             Организация #{{ $organization->id }}

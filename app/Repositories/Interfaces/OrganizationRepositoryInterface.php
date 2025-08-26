@@ -11,4 +11,6 @@ interface OrganizationRepositoryInterface
 
     public function store(array $data): Organization;
 
+    public function update(array $data, int $id): Organization;
+
 }

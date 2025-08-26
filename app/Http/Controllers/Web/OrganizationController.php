@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrganizationRequest;
+use App\Http\Requests\UpdateOrganizationRequest;
 use App\Models\Organization;
 use App\Services\Interfaces\OrganizationServiceInterface;
 
@@ -48,6 +49,25 @@ class OrganizationController extends Controller
         return redirect()
         ->route('organizations.index')
         ->with('success', 'Организация успешно создана');
+
+    }
+    public function edit(Organization $organization)
+    {
+
+        return view('organizations.edit', ['organization' => $organization]);
+
+    }
+
+    public function update(UpdateOrganizationRequest $request, Organization $organization)
+    {
+
+        $data = $request->validated();
+
+        $this->orgService->update($data, $organization->id);
+
+        return redirect()
+        ->route('organizations.show', $organization)
+        ->with('success', 'Информация обновлена');
 
     }
 

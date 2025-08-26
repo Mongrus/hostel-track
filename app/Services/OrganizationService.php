@@ -29,4 +29,11 @@ class OrganizationService implements OrganizationServiceInterface
         return $this->orgRep->store($data);
 
     }
+
+    public function update(array $data, int $id): Organization
+    {
+
+        return $this->orgRep->update($data, $id);
+
+    }
 }
