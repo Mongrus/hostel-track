@@ -16,6 +16,10 @@
                 class="hover:text-gray-300">Организации</a>
             </li>
             <li>
+                <a href="{{ route('bookings.index') }}" 
+                class="hover:text-gray-300">Бронирование</a>
+            </li>
+            <li>
                 <a href="{{ route('dashboard') }}" 
                    class="hover:text-gray-300">Личный кабинет</a>
             </li>

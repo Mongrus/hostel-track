@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\BookingController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\BedController;
 use App\Http\Controllers\Web\OrganizationController;
@@ -100,4 +101,7 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/organizations/{organization}', [OrganizationController::class, 'destroy'])
     ->whereNumber('organization')->name('organizations.destroy');
+
+    /** ---------------- Booking ---------------- */
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
 });

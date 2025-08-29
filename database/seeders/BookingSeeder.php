@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Enums\BookingLevel;
 use App\Enums\BookingStatus;
+use Illuminate\Support\Arr;
 
 class BookingSeeder extends Seeder
 {
@@ -28,8 +29,8 @@ class BookingSeeder extends Seeder
                 'bed_id' => $bed->id,
                 'user_id' => $user->id,
                 'resident_id' => $resident->id,
-                'booking_level' => BookingLevel::BED,
-                'status' => BookingStatus::DAILY,
+                'booking_level' => Arr::random(BookingLevel::cases())->value,
+                'status'        => Arr::random(BookingStatus::cases())->value,
                 'start_date' => now(),
                 'end_date' => now()->addDays(7),
                 'comment' => 'Тестовое бронирование',

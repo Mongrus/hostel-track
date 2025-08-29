@@ -19,7 +19,9 @@ class Booking extends Model
         'resident_id',
         'booking_level',
         'status',
-        'comment'
+        'comment',
+        'start_date',
+        'end_date',
     ];
 
     protected $casts = [
